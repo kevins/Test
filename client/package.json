@@ -1,0 +1,17 @@
+{
+  "name": "math-arena-client",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Responsive multiplayer math game UI",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "socket.io-client": "^4.7.5"
+  },
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
