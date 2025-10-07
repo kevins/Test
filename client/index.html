@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math Arena</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="panel" id="auth-panel">
+        <h1>Math Arena</h1>
+        <p class="tagline">Create a lobby or join with a room code to play.</p>
+        <form id="create-form" class="card">
+          <h2>Host a Lobby</h2>
+          <label class="field">
+            <span>Your Name</span>
+            <input type="text" id="host-name" required placeholder="Alex" />
+          </label>
+          <label class="field">
+            <span>Difficulty</span>
+            <select id="difficulty">
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </label>
+          <button type="submit" class="primary">Create Lobby</button>
+        </form>
+
+        <form id="join-form" class="card">
+          <h2>Join a Lobby</h2>
+          <label class="field">
+            <span>Your Name</span>
+            <input type="text" id="join-name" required placeholder="Sky" />
+          </label>
+          <label class="field">
+            <span>Room Code</span>
+            <input type="text" id="room-code" maxlength="5" required placeholder="ABCDE" />
+          </label>
+          <button type="submit" class="secondary">Join Lobby</button>
+        </form>
+      </section>
+
+      <section class="panel hidden" id="lobby-panel">
+        <header class="panel-header">
+          <div>
+            <h2>Lobby <span id="lobby-code"></span></h2>
+            <p>Share the code with friends to join from their phones.</p>
+          </div>
+          <button id="start-game" class="primary">Start Game</button>
+        </header>
+        <div class="card">
+          <h3>Players</h3>
+          <ul id="player-list"></ul>
+        </div>
+        <div class="card info">
+          <div id="lobby-info"></div>
+          <label class="field inline hidden" id="difficulty-control">
+            <span>Adjust difficulty</span>
+            <select id="lobby-difficulty">
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel hidden" id="game-panel">
+        <header class="panel-header">
+          <div>
+            <h2>Round <span id="round-number">1</span></h2>
+            <p id="round-meta"></p>
+          </div>
+          <button id="leave-game" class="secondary">Leave</button>
+        </header>
+
+        <div class="card prompt">
+          <p class="prompt-text" id="question-text">Waiting for the host to start…</p>
+        </div>
+
+        <form id="answer-form" class="card answer-form">
+          <label class="field">
+            <span>Your Answer</span>
+            <input type="number" id="answer-input" inputmode="numeric" required />
+          </label>
+          <button type="submit" class="primary">Submit</button>
+          <p class="feedback" id="answer-feedback"></p>
+        </form>
+
+        <div class="card leaderboard">
+          <h3>Leaderboard</h3>
+          <ol id="leaderboard-list"></ol>
+        </div>
+      </section>
+
+      <section class="panel hidden" id="results-panel">
+        <header class="panel-header">
+          <div>
+            <h2>Final Results</h2>
+            <p>Great job! Share the standings below.</p>
+          </div>
+          <button id="play-again" class="primary">Play Again</button>
+        </header>
+        <div class="card leaderboard">
+          <ol id="results-list"></ol>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-xPj3TDIrS9KuX3sI5OGucs5cjox96D65gis6pZeRAEIJ5zsxFrqxbPjzvY4xXHzd" crossorigin="anonymous"></script>
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
